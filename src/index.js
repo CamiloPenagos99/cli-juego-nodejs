@@ -24,8 +24,8 @@ while (accion !== TERMINAR) {
         console.table(MATRIZJUEGO);
         const dado = tirarDado();
         console.log(`🎲 ${dado}`);
-        const renderMatriz = moverFicha(MATRIZJUEGO, dado);
-        console.log('moviendo ficha...😎');
-        console.table(renderMatriz);
+        const posicion = moverFicha(MATRIZJUEGO, dado);
+        console.log('moviendo ficha...😎', 'a posicion', posicion);
+        console.table(MATRIZJUEGO);
     }
 }
