@@ -1,5 +1,5 @@
 const POSICIONLIMITE = 4;
-const saltoNivel = 1;
+const SALTONIVEL = 1;
 
 const moverFicha = (matriz, pasos, posicionFila = 4, posicionColumna = -1) => {
     //const casillaInicio = matriz[posicionFila][posicionColumna];
@@ -8,17 +8,19 @@ const moverFicha = (matriz, pasos, posicionFila = 4, posicionColumna = -1) => {
 
     if (movimiento > POSICIONLIMITE) {
         if (posicionColumna == -1) {
-            const pasosEnX = POSICIONLIMITE;
-            const pasosRestantes = pasos - pasosEnX - saltoNivel;
-            matriz[posicionFila + saltoNivel][
-                posicionColumna + pasosEnX - pasosRestantes
+            const pasosEnX = POSICIONLIMITE + 1;
+            const pasosRestantes = pasos - pasosEnX;
+            matriz[posicionFila - SALTONIVEL][
+                POSICIONLIMITE - (pasosRestantes - SALTONIVEL)
             ] = '😎';
         }
-        const pasosEnX = POSICIONLIMITE - posicionColumna;
-        const pasosRestantes = pasos - pasosEnX - saltoNivel;
-        matriz[posicionFila + saltoNivel][
-            posicionColumna + pasosEnX - pasosRestantes
-        ] = '😎';
+        else{
+            const pasosEnX = POSICIONLIMITE;
+            const pasosRestantes = pasos - pasosEnX;
+            matriz[posicionFila - SALTONIVEL][
+                posicionColumna + pasosEnX - (pasosRestantes - SALTONIVEL)
+            
+            ] = '😎'; }
     } else if (movimiento <= POSICIONLIMITE) {
         matriz[posicionFila][posicionColumna + pasos] = '😎';
     }
