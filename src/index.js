@@ -6,9 +6,12 @@ import promptSync from 'prompt-sync';
 import { LANZAR, TERMINADO } from './util/constantes.js';
 import { TERMINAR } from './util/constantes.js';
 import { ascenderDescenderEnTablero } from './juego/logicaTrampasJuego.js';
+import { rellenarFormatoCasillasTabler } from './tablero/formatoTablero.js';
 
 const prompt = promptSync();
 iniciarMatrizJuego(JuegoActual.matriz);
+const matrizCasillas = rellenarFormatoCasillasTabler(JuegoActual.casillas);
+console.table(matrizCasillas);
 console.log('Iniciando nuevo juego...');
 console.log(
     '\n',
