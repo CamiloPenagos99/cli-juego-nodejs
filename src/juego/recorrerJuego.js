@@ -104,7 +104,7 @@ const moverFicha = (juego, matriz, pasos) => {
         matriz[0][4] = '🤩';
         console.log('cambiando icono ganador...', matriz[0][4]);
     }
-    return [nuevaPosicionX,nuevaPosicionY];
+    return [nuevaPosicionY,nuevaPosicionX];
 };
 
 export default moverFicha;

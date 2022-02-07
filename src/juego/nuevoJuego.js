@@ -1,3 +1,5 @@
+import iniciarTrampasAtajos from './trampasJuego.js';
+
 const iniciarMatrizJuego = (juego) => {
     for (let i = 0; i < juego.length; i++) {
         const fila = juego[i];
@@ -6,6 +8,9 @@ const iniciarMatrizJuego = (juego) => {
             juego[i][j] = casilla;
         }
     }
+
+    //iniciar trampas y atajos
+    iniciarTrampasAtajos(juego);
 };
 
 export default iniciarMatrizJuego;
