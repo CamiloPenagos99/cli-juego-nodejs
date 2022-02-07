@@ -27,9 +27,9 @@ while ((accion !== TERMINAR) && (JuegoActual.estado!=TERMINADO)) {
     if (entrada.toUpperCase() === 'EXIT' ) accion = TERMINAR;
     else {
         const dado = tirarDado();
-        console.log(`🎲 ${dado}`);
+        console.log(`🎲 arroja:  ${dado}`);
         const posicion = moverFicha(JuegoActual, JuegoActual.matriz, dado);
-        console.log('moviendo ficha...😎', 'a posicion', posicion);
+        console.log('Jugador avanza...😎', 'a casilla: ', JuegoActual.casillas[posicion[0]][posicion[1]]);
         ascenderDescenderEnTablero(JuegoActual,JuegoActual.matriz,posicion[1],posicion[0]);
         console.table(JuegoActual.matriz);
     }

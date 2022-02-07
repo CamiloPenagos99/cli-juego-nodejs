@@ -7,7 +7,7 @@ const moverFicha = (juego, matriz, pasos) => {
     const posicionColumna = juego.posicion[1];
     let nuevaPosicionY = 0;
     let nuevaPosicionX = 0;
-    console.log(`Moviendo la ficha... ${pasos} lugares`);
+    console.log(`Jugador tiene ${pasos} pasos`);
     if(posicionFila % 2 == 0) {
         const movimiento = posicionColumna + pasos;
         if (movimiento > POSICIONLIMITE) {

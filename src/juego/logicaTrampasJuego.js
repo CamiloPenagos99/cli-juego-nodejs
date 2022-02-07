@@ -12,7 +12,7 @@ export const ascenderDescenderEnTablero = (juego,matriz, posicionX, posicionY)=>
         matriz[nuevaPosicionY][nuevaPosicionX]='😎';
         juego.posicion[0]=nuevaPosicionY;
         juego.posicion[1]=nuevaPosicionX;
-        console.log('El jugador asciende a posicion', juego.posicion);
+        console.log('El jugador asciende a casilla: ', juego.casillas[nuevaPosicionY][nuevaPosicionX]);
     
     }
    
