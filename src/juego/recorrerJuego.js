@@ -21,13 +21,14 @@ const moverFicha = (juego, matriz, pasos) => {
                 if(posicionFila==0){
                     console.log('Ultima fila...');
                     if(posicionColumna+pasos==POSICIONLIMITE){
-                        console.log('... 🏆Ganaste🥇 ...');
+                        console.log('... 🏆 Ganaste 🥇 ...');
                         JuegoActual.estado=TERMINADO;
                         nuevaPosicionY = posicionFila;
                         nuevaPosicionX = POSICIONLIMITE;
                         console.log('cambiando icono ganador...');
                         matriz[0][4] = '🤩';
                         console.log('cambiando icono ganador...', matriz[0][4]);
+                        return [nuevaPosicionX,nuevaPosicionY];
                     }else{
                         console.log('Ultima fila... fuera');
                         nuevaPosicionY = posicionFila;
@@ -48,13 +49,14 @@ const moverFicha = (juego, matriz, pasos) => {
             if(posicionFila==0){
                 console.log('Ultima fila...');
                 if(posicionColumna+pasos==POSICIONLIMITE){
-                    console.log('... 🏆Ganaste🥇 ...');
+                    console.log('... 🏆 Ganaste 🥇 ...');
                     JuegoActual.estado=TERMINADO;
                     nuevaPosicionY = posicionFila;
                     nuevaPosicionX = POSICIONLIMITE;
                     console.log('cambiando icono ganador...',matriz[0][4]);
                     matriz[0][4] = '🤩';
                     console.log('cambiando icono ganador...', matriz[0][4]);
+                    return [nuevaPosicionX,nuevaPosicionY];
                 }else if(posicionColumna+pasos<POSICIONLIMITE){
                     nuevaPosicionY = posicionFila;
                     nuevaPosicionX = posicionColumna+pasos;
@@ -69,6 +71,7 @@ const moverFicha = (juego, matriz, pasos) => {
         juego.posicion[0]=nuevaPosicionY;
         juego.posicion[1]=nuevaPosicionX;
     }
+    //movimiento izquierda a derecha
     else{
         const movimiento = posicionColumna - pasos;
         if(movimiento<0){
@@ -76,7 +79,12 @@ const moverFicha = (juego, matriz, pasos) => {
             const pasosRestantes = pasos - pasosEnX;
             nuevaPosicionY = posicionFila - SALTONIVEL;
             nuevaPosicionX = posicionColumna - pasosEnX + (pasosRestantes - SALTONIVEL);
-            matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
+            if(nuevaPosicionX>POSICIONLIMITE){
+                const pasosSobrantes = nuevaPosicionX - POSICIONLIMITE;
+                nuevaPosicionY = posicionFila - (SALTONIVEL + pasosSobrantes);
+                nuevaPosicionX = posicionColumna - pasosEnX + (pasosRestantes - SALTONIVEL -pasosSobrantes);  
+            }
+            else matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
         }
         else{
             nuevaPosicionY = posicionFila;
@@ -85,6 +93,15 @@ const moverFicha = (juego, matriz, pasos) => {
         }
         juego.posicion[0]=nuevaPosicionY;
         juego.posicion[1]=nuevaPosicionX;
+    }
+    if([nuevaPosicionX,nuevaPosicionY]==[POSICIONLIMITE,0]){
+        console.log('... 🏆 Ganaste 🥇 ...');
+        JuegoActual.estado=TERMINADO;
+        nuevaPosicionY = posicionFila;
+        nuevaPosicionX = POSICIONLIMITE;
+        console.log('cambiando icono ganador...',matriz[0][4]);
+        matriz[0][4] = '🤩';
+        console.log('cambiando icono ganador...', matriz[0][4]);
     }
     return [nuevaPosicionX,nuevaPosicionY];
 };
