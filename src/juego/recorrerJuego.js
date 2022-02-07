@@ -25,10 +25,10 @@ const moverFicha = (juego, matriz, pasos) => {
                         JuegoActual.estado=TERMINADO;
                         nuevaPosicionY = posicionFila;
                         nuevaPosicionX = POSICIONLIMITE;
-                        console.log('cambiando icono ganador...');
+                        console.log('cambiando icono ganador... 1');
                         matriz[0][4] = '🤩';
                         console.log('cambiando icono ganador...', matriz[0][4]);
-                        return [nuevaPosicionX,nuevaPosicionY];
+                        // return [nuevaPosicionX,nuevaPosicionY];
                     }else{
                         console.log('Ultima fila... fuera');
                         nuevaPosicionY = posicionFila;
@@ -53,20 +53,21 @@ const moverFicha = (juego, matriz, pasos) => {
                     JuegoActual.estado=TERMINADO;
                     nuevaPosicionY = posicionFila;
                     nuevaPosicionX = POSICIONLIMITE;
-                    console.log('cambiando icono ganador...',matriz[0][4]);
+                    console.log('cambiando icono ganador...2',matriz[0][4]);
                     matriz[0][4] = '🤩';
                     console.log('cambiando icono ganador...', matriz[0][4]);
-                    return [nuevaPosicionX,nuevaPosicionY];
+                    // return [nuevaPosicionX,nuevaPosicionY];
                 }else if(posicionColumna+pasos<POSICIONLIMITE){
                     nuevaPosicionY = posicionFila;
                     nuevaPosicionX = posicionColumna+pasos;
                     matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
                 }
                
+            }else{
+                nuevaPosicionY = posicionFila;
+                nuevaPosicionX = posicionColumna + pasos;
+                matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
             }
-            nuevaPosicionY = posicionFila;
-            nuevaPosicionX = posicionColumna + pasos;
-            matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
         }
         juego.posicion[0]=nuevaPosicionY;
         juego.posicion[1]=nuevaPosicionX;
@@ -99,7 +100,7 @@ const moverFicha = (juego, matriz, pasos) => {
         JuegoActual.estado=TERMINADO;
         nuevaPosicionY = posicionFila;
         nuevaPosicionX = POSICIONLIMITE;
-        console.log('cambiando icono ganador...',matriz[0][4]);
+        console.log('cambiando icono ganador...3',matriz[0][4]);
         matriz[0][4] = '🤩';
         console.log('cambiando icono ganador...', matriz[0][4]);
     }
