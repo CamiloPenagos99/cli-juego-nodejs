@@ -3,7 +3,7 @@ import JuegoActual from './juego/juego.js';
 import tirarDado from './dado/dado.js';
 import moverFicha from './juego/recorrerJuego.js';
 import promptSync from 'prompt-sync';
-import { LANZAR } from './util/constantes.js';
+import { LANZAR, TERMINADO } from './util/constantes.js';
 import { TERMINAR } from './util/constantes.js';
 
 const prompt = promptSync();
@@ -18,9 +18,9 @@ console.log(
 console.log('');
 console.table(JuegoActual.matriz);
 var accion = LANZAR;
-while (accion !== TERMINAR) {
+while (accion !== TERMINAR || JuegoActual.estado==TERMINADO) {
     const entrada = prompt('Lanza el dado...(tecla enter)');
-    if (entrada.toUpperCase() === 'EXIT') accion = TERMINAR;
+    if (entrada.toUpperCase() === 'EXIT' ) accion = TERMINAR;
     else {
        
         const dado = tirarDado();
