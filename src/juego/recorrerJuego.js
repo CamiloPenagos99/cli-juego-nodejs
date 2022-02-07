@@ -1,8 +1,9 @@
 import { POSICIONLIMITE } from '../util/constantes.js';
 import { SALTONIVEL } from '../util/constantes.js';
 
-const moverFicha = (matriz, pasos, posicionFila = 4, posicionColumna = -1) => {
-    //const casillaInicio = matriz[posicionFila][posicionColumna];
+const moverFicha = (juego, matriz, pasos) => {
+    const posicionFila = juego.posicion[0];
+    const posicionColumna = juego.posicion[1];
     console.log(`Moviendo la ficha... ${pasos} lugares`);
     const movimiento = posicionColumna + pasos;
     let nuevaPosicionY = 0;
@@ -26,7 +27,8 @@ const moverFicha = (matriz, pasos, posicionFila = 4, posicionColumna = -1) => {
         nuevaPosicionX = posicionColumna + pasos;
         matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
     }
-
+    juego.posicion[0]=nuevaPosicionY;
+    juego.posicion[1]=nuevaPosicionX;
     return [nuevaPosicionX,nuevaPosicionY];
 };
 
