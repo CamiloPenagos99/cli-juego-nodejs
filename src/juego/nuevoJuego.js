@@ -1,4 +1,4 @@
-import iniciarTrampasAtajos from './trampasJuego.js';
+import iniciarTrampasAtajos from '../tablero/trampasTablero.js';
 
 const iniciarMatrizJuego = (juego) => {
     for (let i = 0; i < juego.length; i++) {

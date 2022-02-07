@@ -3,8 +3,9 @@ import JuegoActual from './juego/juego.js';
 import tirarDado from './dado/dado.js';
 import moverFicha from './juego/recorrerJuego.js';
 import promptSync from 'prompt-sync';
-import { JUGANDO, LANZAR, TERMINADO } from './util/constantes.js';
+import { LANZAR, TERMINADO } from './util/constantes.js';
 import { TERMINAR } from './util/constantes.js';
+import { ascenderDescenderEnTablero } from './juego/logicaTrampasJuego.js';
 
 const prompt = promptSync();
 iniciarMatrizJuego(JuegoActual.matriz);
@@ -26,6 +27,7 @@ while ((accion !== TERMINAR) && (JuegoActual.estado!=TERMINADO)) {
         console.log(`🎲 ${dado}`);
         const posicion = moverFicha(JuegoActual, JuegoActual.matriz, dado);
         console.log('moviendo ficha...😎', 'a posicion', posicion);
+        ascenderDescenderEnTablero(JuegoActual,JuegoActual.matriz,posicion[1],posicion[0]);
         console.table(JuegoActual.matriz);
     }
 }

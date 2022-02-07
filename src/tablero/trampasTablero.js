@@ -14,13 +14,14 @@ const iniciarTrampasAtajos = (matriz) =>{
     matriz[2][2]  = '📏';
     matriz[1][2]  = '📏';
 
-    //escalera tres
+    //escalera cuatro
     matriz[3][4]  = '📏';
     matriz[2][3]  = '📏';
     matriz[1][3]  = '📏';
 
 
     //atajo uno
+    /*
     matriz[4][3]  = '🐍';
     matriz[3][3]  = '🐍';
     matriz[2][3]  = '🐍';
@@ -33,11 +34,7 @@ const iniciarTrampasAtajos = (matriz) =>{
     //atajo tres
     matriz[1][4]  = '🐍';
     matriz[0][3]  = '🐍';
-    
- 
-   
- 
-
+    */
 };
 
 export default iniciarTrampasAtajos;
