@@ -20,21 +20,24 @@ const iniciarTrampasAtajos = (matriz) =>{
     matriz[1][3]  = '📏';
 
 
-    //atajo uno
-    /*
+    //trampa uno
     matriz[4][3]  = '🐍';
     matriz[3][3]  = '🐍';
     matriz[2][3]  = '🐍';
  
-    //atajo dos
+    //trampa dos
     matriz[3][2]  = '🐍';
     matriz[2][2]  = '🐍';
-    matriz[1][2]  = '🐍';
+    matriz[1][1]  = '🐍';
 
-    //atajo tres
+    //trampa tres
     matriz[1][4]  = '🐍';
     matriz[0][3]  = '🐍';
-    */
+
+    //trampa tres
+    matriz[1][0]  = '🐍';
+    matriz[0][1]  = '🐍';
+    
 };
 
 export default iniciarTrampasAtajos;

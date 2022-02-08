@@ -4,7 +4,8 @@ const iniciarMatrizJuego = (juego) => {
     for (let i = 0; i < juego.length; i++) {
         const fila = juego[i];
         for (let j = 0; j < fila.length; j++) {
-            const casilla = `${i}-${j}⬜`;
+            //const casilla = `${i}-${j}⬜`;
+            const casilla = '⬜';
             juego[i][j] = casilla;
         }
     }

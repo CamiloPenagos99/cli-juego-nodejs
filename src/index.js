@@ -22,15 +22,25 @@ console.log(
 console.log('');
 console.table(JuegoActual.matriz);
 var accion = LANZAR;
-while ((accion !== TERMINAR) && (JuegoActual.estado!=TERMINADO)) {
+while (accion !== TERMINAR && JuegoActual.estado != TERMINADO) {
     const entrada = prompt('Lanza el dado...(tecla enter)');
-    if (entrada.toUpperCase() === 'EXIT' ) accion = TERMINAR;
+    if (entrada.toUpperCase() === 'EXIT') accion = TERMINAR;
     else {
         const dado = tirarDado();
-        console.log(`🎲 arroja:  ${dado}`);
+        console.log(`dado arroja:  🎲 ${dado}`);
         const posicion = moverFicha(JuegoActual, JuegoActual.matriz, dado);
-        console.log('Jugador avanza...😎', 'a casilla: ', JuegoActual.casillas[posicion[0]][posicion[1]]);
-        ascenderDescenderEnTablero(JuegoActual,JuegoActual.matriz,posicion[1],posicion[0]);
+        const casilla = JuegoActual.casillas[posicion[0]][posicion[1]];
+        const mensaje =
+      casilla == 25
+          ? `Jugador supero...🤩 la casilla: ${casilla}`
+          : `Jugador avanza...😎 a casilla: ${casilla}`;
+        console.log(mensaje);
+        ascenderDescenderEnTablero(
+            JuegoActual,
+            JuegoActual.matriz,
+            posicion[1],
+            posicion[0]
+        );
         console.table(JuegoActual.matriz);
     }
 }

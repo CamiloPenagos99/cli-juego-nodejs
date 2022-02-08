@@ -8,7 +8,7 @@ const moverFicha = (juego, matriz, pasos) => {
     let nuevaPosicionY = 0;
     let nuevaPosicionX = 0;
     console.log(`Jugador tiene ${pasos} pasos`);
-    if(posicionFila % 2 == 0) {
+    if (posicionFila % 2 == 0) {
         const movimiento = posicionColumna + pasos;
         if (movimiento > POSICIONLIMITE) {
             if (posicionColumna == -1) {
@@ -18,93 +18,93 @@ const moverFicha = (juego, matriz, pasos) => {
                 nuevaPosicionX = POSICIONLIMITE - (pasosRestantes - SALTONIVEL);
                 matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
             } else {
-                if(posicionFila==0){
-                    console.log('Ultima fila...');
-                    if(posicionColumna+pasos==POSICIONLIMITE){
+                if (posicionFila == 0) {
+                    //console.log('Ultima fila...');
+                    if (posicionColumna + pasos == POSICIONLIMITE) {
                         console.log('... 🏆 Ganaste 🥇 ...');
-                        JuegoActual.estado=TERMINADO;
+                        JuegoActual.estado = TERMINADO;
                         nuevaPosicionY = posicionFila;
                         nuevaPosicionX = POSICIONLIMITE;
-                        console.log('cambiando icono ganador... 1');
-                        matriz[0][4] = '🤩';
-                        console.log('cambiando icono ganador...', matriz[0][4]);
+                        //console.log('cambiando icono ganador... 1');
+                        matriz[0][POSICIONLIMITE] = '🤩';
+                        //console.log('cambiando icono ganador...', matriz[0][4]);
                         // return [nuevaPosicionX,nuevaPosicionY];
-                    }else{
-                        console.log('Ultima fila... fuera');
+                    } else {
+                        console.log('Jugador se mantiene en posicion');
                         nuevaPosicionY = posicionFila;
                         nuevaPosicionX = posicionColumna;
                         matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
                     }
-                   
-                }else{
+                } else {
                     const pasosEnX = POSICIONLIMITE - posicionColumna;
                     const pasosRestantes = pasos - pasosEnX;
                     nuevaPosicionY = posicionFila - SALTONIVEL;
-                    nuevaPosicionX = posicionColumna + pasosEnX - (pasosRestantes - SALTONIVEL);
+                    nuevaPosicionX =
+            posicionColumna + pasosEnX - (pasosRestantes - SALTONIVEL);
                     matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
                 }
-               
             }
         } else if (movimiento <= POSICIONLIMITE) {
-            if(posicionFila==0){
-                console.log('Ultima fila...');
-                if(posicionColumna+pasos==POSICIONLIMITE){
+            if (posicionFila == 0) {
+                //console.log('Ultima fila...');
+                if (posicionColumna + pasos == POSICIONLIMITE) {
                     console.log('... 🏆 Ganaste 🥇 ...');
-                    JuegoActual.estado=TERMINADO;
+                    JuegoActual.estado = TERMINADO;
                     nuevaPosicionY = posicionFila;
                     nuevaPosicionX = POSICIONLIMITE;
-                    console.log('cambiando icono ganador...2',matriz[0][4]);
-                    matriz[0][4] = '🤩';
-                    console.log('cambiando icono ganador...', matriz[0][4]);
+                    //console.log('cambiando icono ganador...2',matriz[0][4]);
+                    matriz[0][POSICIONLIMITE] = '🤩';
+                    //console.log('cambiando icono ganador...', matriz[0][4]);
                     // return [nuevaPosicionX,nuevaPosicionY];
-                }else if(posicionColumna+pasos<POSICIONLIMITE){
+                } else if (posicionColumna + pasos < POSICIONLIMITE) {
                     nuevaPosicionY = posicionFila;
-                    nuevaPosicionX = posicionColumna+pasos;
+                    nuevaPosicionX = posicionColumna + pasos;
                     matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
                 }
-               
-            }else{
+            } else {
                 nuevaPosicionY = posicionFila;
                 nuevaPosicionX = posicionColumna + pasos;
                 matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
             }
         }
-        juego.posicion[0]=nuevaPosicionY;
-        juego.posicion[1]=nuevaPosicionX;
+        juego.posicion[0] = nuevaPosicionY;
+        juego.posicion[1] = nuevaPosicionX;
     }
     //movimiento izquierda a derecha
-    else{
+    else {
         const movimiento = posicionColumna - pasos;
-        if(movimiento<0){
-            const pasosEnX = posicionColumna-0;
+        if (movimiento < 0) {
+            const pasosEnX = posicionColumna - 0;
             const pasosRestantes = pasos - pasosEnX;
             nuevaPosicionY = posicionFila - SALTONIVEL;
-            nuevaPosicionX = posicionColumna - pasosEnX + (pasosRestantes - SALTONIVEL);
-            if(nuevaPosicionX>POSICIONLIMITE){
+            nuevaPosicionX =
+        posicionColumna - pasosEnX + (pasosRestantes - SALTONIVEL);
+            if (nuevaPosicionX > POSICIONLIMITE) {
                 const pasosSobrantes = nuevaPosicionX - POSICIONLIMITE;
                 nuevaPosicionY = posicionFila - (SALTONIVEL + pasosSobrantes);
-                nuevaPosicionX = posicionColumna - pasosEnX + (pasosRestantes - SALTONIVEL -pasosSobrantes);  
-            }
-            else matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
-        }
-        else{
+                nuevaPosicionX =
+          posicionColumna -
+          pasosEnX +
+          (pasosRestantes - SALTONIVEL - pasosSobrantes);
+            } else matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
+        } else {
             nuevaPosicionY = posicionFila;
             nuevaPosicionX = posicionColumna - pasos;
             matriz[nuevaPosicionY][nuevaPosicionX] = '😎';
         }
-        juego.posicion[0]=nuevaPosicionY;
-        juego.posicion[1]=nuevaPosicionX;
+        juego.posicion[0] = nuevaPosicionY;
+        juego.posicion[1] = nuevaPosicionX;
     }
-    if([nuevaPosicionX,nuevaPosicionY]==[POSICIONLIMITE,0]){
+    if ((nuevaPosicionX == POSICIONLIMITE) && (nuevaPosicionY == 0)) {
         console.log('... 🏆 Ganaste 🥇 ...');
-        JuegoActual.estado=TERMINADO;
+        JuegoActual.estado = TERMINADO;
         nuevaPosicionY = posicionFila;
         nuevaPosicionX = POSICIONLIMITE;
-        console.log('cambiando icono ganador...3',matriz[0][4]);
-        matriz[0][4] = '🤩';
-        console.log('cambiando icono ganador...', matriz[0][4]);
+        //console.log('cambiando icono ganador...3',matriz[0][4]);
+        matriz[0][POSICIONLIMITE] = '🤩';
+    //console.log('cambiando icono ganador...', matriz[0][4]);
     }
-    return [nuevaPosicionY,nuevaPosicionX];
+    return [nuevaPosicionY, nuevaPosicionX];
 };
 
 export default moverFicha;
